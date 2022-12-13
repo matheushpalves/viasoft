@@ -1,0 +1,20 @@
+unit uCentroCustoPai;
+
+interface
+
+type
+  TCentroCustoPai = Class
+
+  private
+
+  public
+    CodigoPai : Integer;
+    Tipo      : String;
+    Descricao : String;
+
+
+  End;
+
+implementation
+
+end.

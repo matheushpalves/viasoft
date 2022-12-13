@@ -1,0 +1,16 @@
+unit uCentroCustoPai;
+
+interface
+
+type
+  TCentroCustoPai = Class
+
+  private
+
+  public
+
+  End;
+
+implementation
+
+end.

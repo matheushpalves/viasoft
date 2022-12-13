@@ -1,0 +1,35 @@
+unit uCentroCustoPai;
+
+interface
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+Type
+  TCentroCustoPai = Class
+
+  private
+
+  public
+    CodigoPai : String;
+    Tipo      : String;
+    Descricao : String;
+
+    function ValidaFormatoPai(Valor : String) : String;
+
+
+  End;
+
+implementation
+
+{ TCentroCustoPai }
+
+function TCentroCustoPai.ValidaFormatoPai(Valor: String): String;
+begin
+  if Length(valor) > 2 then
+  begin
+
+  end;
+end;
+
+end.

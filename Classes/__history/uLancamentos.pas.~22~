@@ -1,0 +1,82 @@
+unit uLancamentos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  Vcl.ExtCtrls, Vcl.Buttons, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.Mask, RxToolEdit, RxCurrEdit,
+  uCentroCustoFilho;
+
+type
+  TLancamento = Class(TCentroCustoFilho)
+
+  private
+
+  public
+    Valor               : double;
+    IdCentroCustoPai    : integer;
+    IdCentroCustoFilho  : integer;
+
+    procedure GravaDados(
+              codigoCCPai,codigoCCFilho,DescricaoPai,DescricaoFilho : String;
+              valor : double);
+
+  End;
+
+implementation
+
+uses DMPrincipal;
+
+{ TLancamento }
+
+procedure TLancamento.GravaDados(
+              codigoCCPai,codigoCCFilho,DescricaoPai,DescricaoFilho : String;
+              valor : double);
+var
+  Lancamentos : TLancamento;
+begin
+  try
+    Lancamentos := TLancamento.Create;
+
+    try
+      DM1Principal.TabCentroDeCustoPai.Insert;
+      DM1Principal.TabCentroDeCustoFilho.Insert;
+      DM1Principal.TabLancamentos.Insert;
+
+      //Gravando Centro de Custo Pai
+      DM1Principal.TabCentroDeCustoPaicodigopai.Value := codigoCCPai;
+      DM1Principal.TabCentroDeCustoPaidescricao.value := DescricaoPai;
+      DM1Principal.TabCentroDeCustoPai.ApplyUpdates();
+      DM1Principal.qRetornaCodPai.Active := False;
+      DM1Principal.qRetornaCodPai.Active := True;
+
+      //Gravando Centro de Custo Filho
+      DM1Principal.TabCentroDeCustoFilhocodigofilho.value := codigoCCFilho;
+      DM1Principal.TabCentroDeCustoFilhodescricao.Value   := DescricaoFilho;
+      DM1Principal.TabCentroDeCustoFilho.ApplyUpdates();
+      DM1Principal.qRetornaCodFilho.Active := False;
+      DM1Principal.qRetornaCodFilho.Active := True;
+
+      //Gravando Lancamentos
+      DM1Principal.TabLancamentosid_centrodecustopai.Value   := DM1Principal.qRetornaCodPaiultimopai.Value;
+      DM1Principal.TabLancamentosid_centrodecustofilho.Value := DM1Principal.qRetornaCodFilhoultimofilho.Value;
+      DM1Principal.TabLancamentosvalor.Value      := Valor;
+      DM1Principal.TabLancamentos.ApplyUpdates();
+
+      DM1Principal.TabCentroDeCustoPai.Refresh;
+      DM1Principal.TabCentroDeCustoFilho.Refresh;
+      DM1Principal.TabLancamentos.Refresh;
+      DM1Principal.qListaRegistros.Refresh;
+    finally
+      Lancamentos.DisposeOf;
+    end;
+  except on E: Exception do
+  {$IFDEF DEBUG}
+    ShowMessage(e.Message);
+  {$ENDIF}
+  end;
+
+end;
+
+end.

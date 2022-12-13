@@ -1,0 +1,69 @@
+unit DMPrincipal;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, UniProvider, PostgreSQLUniProvider, Data.DB,
+  DBAccess, Uni, MemDS;
+
+type
+  TDM1Principal = class(TDataModule)
+    uConexaoBanco: TUniConnection;
+    PostgreSQLUniProvider1: TPostgreSQLUniProvider;
+    qListaRegistros: TUniQuery;
+    dsListaRegistros: TUniDataSource;
+    TabCentroDeCustoPai: TUniQuery;
+    TabCentroDeCustoFilho: TUniQuery;
+    TabCentroDeCustoPaiid_ccpai: TIntegerField;
+    TabCentroDeCustoPaicodigo: TStringField;
+    TabCentroDeCustoPaidescricao: TStringField;
+    TabLancamentos: TUniQuery;
+    TabCentroDeCustoFilhoid_ccfilho: TIntegerField;
+    TabCentroDeCustoFilhocodigo: TStringField;
+    TabCentroDeCustoFilhodescricao: TStringField;
+    TabLancamentosid_lancamento: TIntegerField;
+    TabLancamentosvalor: TFloatField;
+    TabLancamentosid_ccpai: TIntegerField;
+    TabLancamentosid_ccfilho: TIntegerField;
+    qListaRegistrosnumerolancamento: TIntegerField;
+    qListaRegistrosdescricaopai: TStringField;
+    qListaRegistrosdescricaofilho: TStringField;
+    qListaRegistroscodigopai: TStringField;
+    qListaRegistroscodigofilho: TStringField;
+    qListaRegistrosvalor: TFloatField;
+    qRetornaCodPai: TUniQuery;
+    qRetornaCodPaiultimopai: TIntegerField;
+    qRetornaCodFilho: TUniQuery;
+    qRetornaCodFilhoultimofilho: TIntegerField;
+    procedure DataModuleCreate(Sender: TObject);
+    procedure DataModuleDestroy(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DM1Principal: TDM1Principal;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+procedure TDM1Principal.DataModuleCreate(Sender: TObject);
+begin
+  TabCentroDeCustoPai.Open;
+  TabCentroDeCustoFilho.Open;
+  TabLancamentos.Open;
+end;
+
+procedure TDM1Principal.DataModuleDestroy(Sender: TObject);
+begin
+  TabCentroDeCustoPai.Close;
+  TabCentroDeCustoFilho.Close;
+  TabLancamentos.Close;
+end;
+
+end.

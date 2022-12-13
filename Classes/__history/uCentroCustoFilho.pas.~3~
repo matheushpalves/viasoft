@@ -1,0 +1,19 @@
+unit uCentroCustoFilho;
+
+interface
+
+Type
+  TCentroCustoFilho = Class(TCentroCustoPai)
+
+  Private
+
+  Public
+
+  End;
+
+
+implementation
+
+uses uCentroCustoPai;
+
+end.

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2022/12/08 21:36:09.000.368,=C:\Users\mathe\OneDrive\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/12/08 21:36:56.000.514,C:\Users\mathe\OneDrive\Documents\Embarcadero\Studio\Projects\Unit1.dfm=D:\Projetos\ViaSoft\uPrincipal.dfm</Transaction>
+    <Transaction>2022/12/08 21:36:56.000.514,C:\Users\mathe\OneDrive\Documents\Embarcadero\Studio\Projects\Unit1.pas=D:\Projetos\ViaSoft\uPrincipal.pas</Transaction>
+    <Transaction>2022/12/08 21:37:07.000.034,C:\Users\mathe\OneDrive\Documents\Embarcadero\Studio\Projects\Project1.dproj=D:\Projetos\ViaSoft\ViaSoft.dproj</Transaction>
+    <Transaction>2022/12/09 21:31:15.000.448,=D:\Projetos\ViaSoft\Unit1.pas</Transaction>
+    <Transaction>2022/12/09 21:35:49.000.398,D:\Projetos\ViaSoft\ModulodeDados\DMPrincipal.pas=D:\Projetos\ViaSoft\Unit1.pas</Transaction>
+    <Transaction>2022/12/09 21:35:49.000.398,D:\Projetos\ViaSoft\ModulodeDados\DMPrincipal.dfm=D:\Projetos\ViaSoft\Unit1.dfm</Transaction>
+    <Transaction>2022/12/09 21:35:59.000.058,=D:\Projetos\ViaSoft\Unit1.pas</Transaction>
+    <Transaction>2022/12/09 21:36:54.000.890,D:\Projetos\ViaSoft\uClasseCentroCustoPai.pas=D:\Projetos\ViaSoft\Unit1.pas</Transaction>
+    <Transaction>2022/12/09 21:37:07.000.801,D:\Projetos\ViaSoft\uClasseCentroCustoPai.pas=</Transaction>
+    <Transaction>2022/12/09 21:37:12.000.549,=D:\Projetos\ViaSoft\Unit1.pas</Transaction>
+    <Transaction>2022/12/09 21:37:38.000.016,D:\Projetos\ViaSoft\Classes\uCentroCustoPai.pas=D:\Projetos\ViaSoft\Unit1.pas</Transaction>
+    <Transaction>2022/12/09 22:21:36.000.682,=D:\Projetos\ViaSoft\Unit1.pas</Transaction>
+    <Transaction>2022/12/09 22:21:59.000.895,D:\Projetos\ViaSoft\Classes\uCentroCustoFilho.pas=D:\Projetos\ViaSoft\Unit1.pas</Transaction>
+    <Transaction>2022/12/11 14:22:43.000.483,=D:\Projetos\ViaSoft\Unit1.pas</Transaction>
+    <Transaction>2022/12/11 14:34:00.000.650,D:\Projetos\ViaSoft\Unit1.pas=D:\Projetos\ViaSoft\Classes\uLancamentos.pas</Transaction>
+    <Transaction>2022/12/11 14:57:38.000.831,=D:\Projetos\ViaSoft\Unit1.pas</Transaction>
+    <Transaction>2022/12/12 21:26:26.167,=D:\Projetos\ViaSoft\Unit1.pas</Transaction>
+    <Transaction>2022/12/12 21:26:44.116,D:\Projetos\ViaSoft\uFuncoesUteis.pas=D:\Projetos\ViaSoft\Unit1.pas</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="Classes"/>
+    <File Path="Classes\uCentroCustoFilho.pas"/>
+    <File Path="Classes\uCentroCustoPai.pas"/>
+    <File Path="Classes\uLancamentos.pas"/>
+    <File Path="ModulodeDados"/>
+    <File Path="ModulodeDados\DMPrincipal.pas"/>
+    <File Path="ModulodeDados\DMPrincipal.dfm"/>
+    <File Path="uPrincipal.pas"/>
+    <File Path="uPrincipal.dfm"/>
+    <File Path="uFuncoesUteis.pas"/>
+  </ProjectSortOrder>
+</BorlandProject>

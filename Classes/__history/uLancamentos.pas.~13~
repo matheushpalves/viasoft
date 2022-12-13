@@ -1,0 +1,65 @@
+unit uLancamentos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  Vcl.ExtCtrls, Vcl.Buttons, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.Mask, RxToolEdit, RxCurrEdit,
+  uCentroCustoFilho;
+
+type
+  TLancamento = Class(TCentroCustoFilho)
+
+  private
+
+  public
+    Valor               : double;
+    IdCentroCustoPai    : integer;
+    IdCentroCustoFilho  : integer;
+
+    procedure GravaDados();
+
+  End;
+
+implementation
+
+uses DMPrincipal;
+
+{ TLancamento }
+
+procedure TLancamento.GravaDados();
+var
+  lancamentos : TLancamento;
+begin
+  try
+
+  except on E: Exception do
+
+  end;
+  DM1Principal.TabCentroDeCustoPai.Insert;
+  DM1Principal.TabCentroDeCustoFilho.Insert;
+  DM1Principal.TabLancamentos.Insert;
+
+  //Gravando Centro de Custo Pai
+  DM1Principal.TabCentroDeCustoPaicodigo.Value    := lancamentos.CodigoPai;
+  DM1Principal.TabCentroDeCustoPaidescricao.value := lancamentos.DescricaoPai;
+  DM1Principal.TabCentroDeCustoPai.ApplyUpdates();
+  DM1Principal.qRetornaCodPai.Active := False;
+  DM1Principal.qRetornaCodPai.Active := True;
+
+  //Gravando Centro de Custo Filho
+  DM1Principal.TabCentroDeCustoFilhocodigo.value    := lancamentos.CodigoFilho;
+  DM1Principal.TabCentroDeCustoFilhodescricao.Value := lancamentos.DescricaoFilho;
+  DM1Principal.TabCentroDeCustoFilho.ApplyUpdates();
+  DM1Principal.qRetornaCodFilho.Active := False;
+  DM1Principal.qRetornaCodFilho.Active := True;
+
+  //Gravando Lancamentos
+  DM1Principal.TabLancamentosid_ccpai.Value   := DM1Principal.qRetornaCodPaiultimopai.Value;
+  DM1Principal.TabLancamentosid_ccfilho.Value := DM1Principal.qRetornaCodFilhoultimofilho.Value;
+  DM1Principal.TabLancamentosvalor.Value      := lancamentos.Valor;
+  DM1Principal.TabLancamentos.ApplyUpdates();
+end;
+
+end.

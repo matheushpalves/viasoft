@@ -1,0 +1,170 @@
+object DM1Principal: TDM1Principal
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
+  Height = 383
+  Width = 546
+  object uConexaoBanco: TUniConnection
+    ProviderName = 'PostgreSQL'
+    Port = 5432
+    Database = 'Centrodecusto'
+    Username = 'postgres'
+    Server = '127.0.0.1'
+    Connected = True
+    Left = 64
+    Top = 24
+    EncryptedPassword = 'ADFFB0FFB0FFABFF'
+  end
+  object PostgreSQLUniProvider1: TPostgreSQLUniProvider
+    Left = 64
+    Top = 80
+  end
+  object qListaRegistros: TUniQuery
+    Connection = uConexaoBanco
+    SQL.Strings = (
+      'select '
+      'l.id_lancamento as NumeroLancamento,'
+      'cp.descricao as DescricaoPai,'
+      'cf.descricao as DescricaoFilho,'
+      'cp.codigo as CodigoPai,'
+      'cf.codigo as CodigoFilho,'
+      'l.valor'
+      'from lancamentos l'
+      'inner join centrocustopai cp on cp.id_ccpai = l.id_ccpai'
+      'inner join centrocustofilho cf on cf.id_ccfilho = l.id_ccfilho')
+    Active = True
+    Left = 64
+    Top = 216
+    object qListaRegistrosnumerolancamento: TIntegerField
+      DisplayLabel = 'N'#186'  Lancamento'
+      FieldName = 'numerolancamento'
+      Required = True
+    end
+    object qListaRegistrosdescricaopai: TStringField
+      DisplayLabel = 'Descri'#231#227'ao Pai'
+      DisplayWidth = 35
+      FieldName = 'descricaopai'
+      ReadOnly = True
+      Size = 45
+    end
+    object qListaRegistroscodigopai: TStringField
+      DisplayLabel = 'Centro de Custo Pai'
+      FieldName = 'codigopai'
+      ReadOnly = True
+      Size = 2
+    end
+    object qListaRegistrosdescricaofilho: TStringField
+      DisplayLabel = 'Descri'#231#227'o Filho'
+      DisplayWidth = 35
+      FieldName = 'descricaofilho'
+      ReadOnly = True
+      Size = 45
+    end
+    object qListaRegistroscodigofilho: TStringField
+      DisplayLabel = 'Centro de Custo Filho'
+      FieldName = 'codigofilho'
+      ReadOnly = True
+      Size = 4
+    end
+    object qListaRegistrosvalor: TFloatField
+      DisplayLabel = 'Valor'
+      FieldName = 'valor'
+      currency = True
+    end
+  end
+  object dsListaRegistros: TUniDataSource
+    DataSet = qListaRegistros
+    Left = 64
+    Top = 264
+  end
+  object TabCentroDeCustoPai: TUniQuery
+    Connection = uConexaoBanco
+    SQL.Strings = (
+      'SELECT * FROM centrocustopai')
+    CachedUpdates = True
+    Options.DefaultValues = True
+    Left = 224
+    Top = 24
+    object TabCentroDeCustoPaiid_ccpai: TIntegerField
+      FieldName = 'id_ccpai'
+      Required = True
+    end
+    object TabCentroDeCustoPaicodigo: TStringField
+      FieldName = 'codigo'
+      Size = 2
+    end
+    object TabCentroDeCustoPaidescricao: TStringField
+      FieldName = 'descricao'
+      Size = 45
+    end
+  end
+  object TabCentroDeCustoFilho: TUniQuery
+    Connection = uConexaoBanco
+    SQL.Strings = (
+      'select * from centrocustofilho ')
+    CachedUpdates = True
+    Options.DefaultValues = True
+    Left = 344
+    Top = 23
+    object TabCentroDeCustoFilhoid_ccfilho: TIntegerField
+      FieldName = 'id_ccfilho'
+      Required = True
+    end
+    object TabCentroDeCustoFilhocodigo: TStringField
+      FieldName = 'codigo'
+      Size = 4
+    end
+    object TabCentroDeCustoFilhodescricao: TStringField
+      FieldName = 'descricao'
+      Size = 45
+    end
+  end
+  object TabLancamentos: TUniQuery
+    Connection = uConexaoBanco
+    SQL.Strings = (
+      'select * from lancamentos')
+    CachedUpdates = True
+    Options.DefaultValues = True
+    Left = 448
+    Top = 22
+    object TabLancamentosid_lancamento: TIntegerField
+      FieldName = 'id_lancamento'
+      Required = True
+    end
+    object TabLancamentosvalor: TFloatField
+      FieldName = 'valor'
+    end
+    object TabLancamentosid_ccpai: TIntegerField
+      FieldName = 'id_ccpai'
+    end
+    object TabLancamentosid_ccfilho: TIntegerField
+      FieldName = 'id_ccfilho'
+    end
+  end
+  object qRetornaCodPai: TUniQuery
+    Connection = uConexaoBanco
+    SQL.Strings = (
+      'SELECT max(id_ccpai) as ultimopai FROM centrocustopai')
+    CachedUpdates = True
+    Options.DefaultValues = True
+    Left = 224
+    Top = 75
+    object qRetornaCodPaiultimopai: TIntegerField
+      FieldName = 'ultimopai'
+      ReadOnly = True
+    end
+  end
+  object qRetornaCodFilho: TUniQuery
+    Connection = uConexaoBanco
+    SQL.Strings = (
+      'select max(id_ccfilho) ultimoFilho from centrocustofilho ')
+    CachedUpdates = True
+    Options.DefaultValues = True
+    Left = 344
+    Top = 77
+    object qRetornaCodFilhoultimofilho: TIntegerField
+      FieldName = 'ultimofilho'
+      ReadOnly = True
+    end
+  end
+end
